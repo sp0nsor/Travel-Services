@@ -12,7 +12,7 @@ using RestaurantCatalogService.DataAccess;
 namespace RestaurantCatalogService.Migrations
 {
     [DbContext(typeof(RestaurantCatalogDbContext))]
-    [Migration("20241219175421_init")]
+    [Migration("20241219223359_init")]
     partial class init
     {
         /// <inheritdoc />

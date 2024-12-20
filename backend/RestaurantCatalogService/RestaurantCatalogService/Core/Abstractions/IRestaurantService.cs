@@ -5,6 +5,6 @@ namespace RestaurantCatalogService.Core.Abstractions
     public interface IRestaurantService
     {
         Task<IResult> CreateRestaurant(CreateRestaurantRequest request);
-        Task<IResult> GetRestaurants(GetRestaurantRequest request);
+        Task<List<RestaurantResponse>> GetRestaurants(GetRestaurantRequest request);
     }
 }

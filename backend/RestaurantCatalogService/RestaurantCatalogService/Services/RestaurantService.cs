@@ -15,7 +15,7 @@ namespace RestaurantCatalogService.Services
             this.restaurantRepository = restaurantRepository;
         }
 
-        public async Task<IResult> GetRestaurants(GetRestaurantRequest request)
+        public async Task<List<RestaurantResponse>> GetRestaurants(GetRestaurantRequest request)
         {
             var restaurants = await restaurantRepository.Get(request.SearchCity, request.SearchPricecategory);
 
@@ -29,7 +29,7 @@ namespace RestaurantCatalogService.Services
                     Rating: r.Rating))
                 .ToList();
 
-            return response == null ? Results.BadRequest() : Results.Ok(response);
+            return response;
         }
 
         public async Task<IResult> CreateRestaurant(CreateRestaurantRequest request)
@@ -41,14 +41,19 @@ namespace RestaurantCatalogService.Services
                     r.Score)
                 .Review).ToList();
 
-            var restaurant = Restaurant.Create(
+            var (restaurant, error) = Restaurant.Create(
                 Guid.NewGuid(),
                 request.Name,
                 request.Description,
                 request.PriceCategory,
                 request.City,
                 request.Address,
-                reviews).Restaurant;
+                reviews);
+
+            if (!string.IsNullOrEmpty(error))
+            {
+                return Results.BadRequest(error);
+            }
 
             var id = await restaurantRepository.Create(restaurant);
 

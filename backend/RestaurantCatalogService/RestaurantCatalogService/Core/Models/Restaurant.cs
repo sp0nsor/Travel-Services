@@ -26,7 +26,8 @@
 
         public const int MAX_DESCRIPTION_LENGTH = 250;
 
-        public static(Restaurant Restaurant, string Error) Create(Guid id, string name, string description, string priceCategory,
+        public static(Restaurant Restaurant, string Error) Create
+            (Guid id, string name, string description, string priceCategory,
             string city, string address, List<Review> reviews)
         {
             var error = string.Empty;

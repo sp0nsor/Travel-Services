@@ -6,7 +6,7 @@ namespace RestaurantCatalogService.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class RestaurantController
+    public class RestaurantController : ControllerBase
     {
         private readonly IRestaurantService restaurantService;
 
@@ -16,7 +16,7 @@ namespace RestaurantCatalogService.Controllers
         }
 
         [HttpPut]
-        public async Task<IResult> GetRestaurants([FromBody] GetRestaurantRequest request)
+        public async Task<List<RestaurantResponse>> GetRestaurants([FromBody] GetRestaurantRequest request)
         {
             var response = await restaurantService.GetRestaurants(request);
 
