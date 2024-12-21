@@ -30,6 +30,14 @@ builder.Services.AddHttpClient<IRestaurantService, RestaurantService>(client =>
 
 var app = builder.Build();
 
+app.UseCors(policy =>
+{
+    policy.WithOrigins("http://localhost:5173")
+          .AllowCredentials()
+          .AllowAnyHeader()
+          .AllowAnyMethod();
+});
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

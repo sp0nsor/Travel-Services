@@ -41,6 +41,7 @@ namespace HotelBookingService.Services
             var hotels = await hotelRepository.Get();
 
             var hotelResponse = hotels.Select(h => new HotelResponse(
+                h.Id,
                 h.Name,
                 h.Description,
                 h.PriceCategory,
