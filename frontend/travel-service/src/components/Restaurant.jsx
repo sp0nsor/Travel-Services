@@ -7,16 +7,15 @@ import {
   Divider,
   CardBody,
 } from "@chakra-ui/react";
-import { useState } from "react";
-import BookingForm from "./BookingForm";
 
-export default function Hotel({ id, name, description, priceCategory, city }) {
-  const [showBookingForm, setShowBookingForm] = useState(false);
-
-  const onClick = () => {
-    setShowBookingForm(!showBookingForm);
-  };
-
+export default function Restaurant({
+  name,
+  description,
+  priceCategory,
+  city,
+  address,
+  rating,
+}) {
   return (
     <Card variant={"filled"}>
       <CardHeader>
@@ -24,10 +23,11 @@ export default function Hotel({ id, name, description, priceCategory, city }) {
       </CardHeader>
       <Divider borderColor={"gray"} />
       <CardBody>
-        <Text fontSize="sm">Описание: {description}</Text>
+        <Text fontSize="sm">Описаиние: {description}</Text>
         <Text>Город: {city}</Text>
         <Text>Ценовая категория: {priceCategory}</Text>
-        {showBookingForm && <BookingForm hotelId={id} />}{" "}
+        <Text>Адрес: {address}</Text>
+        <Text>Рейтинг: {rating}</Text>
       </CardBody>
       <Divider borderColor={"gray"} />
     </Card>

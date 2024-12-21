@@ -10,3 +10,9 @@ export const createHotel = async (hotel) => {
 
   return response.status;
 };
+
+export const createBooking = async (booking) => {
+  var response = await axios.post("http://localhost:5010/booking", booking);
+
+  return response.data;
+};

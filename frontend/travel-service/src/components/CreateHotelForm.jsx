@@ -11,7 +11,6 @@ export default function CreateHotelForm({ onCreate }) {
 
   const onSubmit = (e) => {
     onCreate(hotel);
-    // setHotel(null);
   };
 
   return (
